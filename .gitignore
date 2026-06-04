@@ -234,3 +234,6 @@ __pycache__/
 # !tools/build.sh
 
 # TODO: Add your own custom ignores here
+
+.github/agents/
+.github/copilot-instructions.md
