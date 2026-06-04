@@ -31,12 +31,26 @@ namespace delivery_back.Startup
             #region Repositories
 
             builder.Services.AddScoped<IRestauranteRepository, RestauranteRepository>();
+            builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+            builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            builder.Services.AddScoped<IEntregadorRepository, EntregadorRepository>();
+            builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+            builder.Services.AddScoped<IItemPedidoRepository, ItemPedidoRepository>();
+            builder.Services.AddScoped<IPagamentoRepository, PagamentoRepository>();
 
             #endregion Repositories
 
             #region Services
 
             builder.Services.AddScoped<IRestauranteService, RestauranteService>();
+            builder.Services.AddScoped<IProdutoService, ProdutoService>();
+            builder.Services.AddScoped<IClienteService, ClienteService>();
+            builder.Services.AddScoped<IEnderecoService, EnderecoService>();
+            builder.Services.AddScoped<IEntregadorService, EntregadorService>();
+            builder.Services.AddScoped<IPedidoService, PedidoService>();
+            builder.Services.AddScoped<IItemPedidoService, ItemPedidoService>();
+            builder.Services.AddScoped<IPagamentoService, PagamentoService>();
 
             #endregion Services
 

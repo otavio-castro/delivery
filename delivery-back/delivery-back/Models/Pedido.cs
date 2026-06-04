@@ -39,6 +39,8 @@ namespace delivery_back.Models
         [Required]
         public StatusPedido Status { get; set; } = StatusPedido.Pendente;
 
+        [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "O valor total deve ser maior ou igual a zero")]
         public decimal ValorTotal { get; set; }
 
         [StringLength(500)]

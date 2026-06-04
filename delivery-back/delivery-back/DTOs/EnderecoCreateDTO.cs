@@ -1,15 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace delivery_back.Models
+namespace delivery_back.DTOs
 {
-    [Table("Enderecos")]
-    public class Endereco
+    public class EnderecoCreateDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EnderecoId { get; set; }
-
         [Required, StringLength(255)]
         public string Logradouro { get; set; } = string.Empty;
 
@@ -26,10 +20,10 @@ namespace delivery_back.Models
         public string Cidade { get; set; } = string.Empty;
 
         [Required, StringLength(10)]
+        [RegularExpression(@"^\d{5}-?\d{3}$", ErrorMessage = "CEP deve estar no formato 00000-000 ou 00000000")]
         public string CEP { get; set; } = string.Empty;
 
-        [ForeignKey("Cliente")]
+        [Required]
         public int ClienteId { get; set; }
-        public Cliente? Cliente { get; set; }
     }
 }

@@ -1,15 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace delivery_back.Models
+namespace delivery_back.DTOs
 {
-    [Table("Produtos")]
-    public class Produto
+    public class ProdutoUpdateDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ProdutoId { get; set; }
-
         [Required, StringLength(150)]
         public string Nome { get; set; } = string.Empty;
 
@@ -26,12 +20,6 @@ namespace delivery_back.Models
         [StringLength(100)]
         public string? Categoria { get; set; }
 
-        public bool Disponivel { get; set; } = true;
-
-        [ForeignKey("Restaurante")]
-        public int RestauranteId { get; set; }
-        public Restaurante? Restaurante { get; set; }
-
-        public ICollection<ItemPedido> ItensPedido { get; set; } = [];
+        public bool Disponivel { get; set; }
     }
 }

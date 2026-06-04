@@ -23,6 +23,8 @@ namespace delivery_back.Models
         [Required]
         public StatusPagamento Status { get; set; } = StatusPagamento.Pendente;
 
+        [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "O valor deve ser maior ou igual a zero")]
         public decimal Valor { get; set; }
 
         public DateTime CriadoEm { get; set; } = DateTime.UtcNow;

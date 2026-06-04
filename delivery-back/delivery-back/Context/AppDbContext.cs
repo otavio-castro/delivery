@@ -15,5 +15,25 @@ namespace delivery_back.Context
         public DbSet<ItemPedido> ItensPedido { get; set; }
         public DbSet<Entregador> Entregadores { get; set; }
         public DbSet<Pagamento> Pagamentos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Índice único para Email do Cliente
+            modelBuilder.Entity<Cliente>()
+                .HasIndex(c => c.Email)
+                .IsUnique();
+
+            // Índice único para CPF do Entregador
+            modelBuilder.Entity<Entregador>()
+                .HasIndex(e => e.CPF)
+                .IsUnique();
+
+            // Índice único para PedidoId do Pagamento (relação 1:1)
+            modelBuilder.Entity<Pagamento>()
+                .HasIndex(p => p.PedidoId)
+                .IsUnique();
+        }
     }
 }

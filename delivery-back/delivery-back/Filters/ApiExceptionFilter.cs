@@ -13,6 +13,16 @@ namespace delivery_back.Filters
                 context.Result = new NotFoundObjectResult(new { message = notFound.Message });
                 context.ExceptionHandled = true;
             }
+            else if (context.Exception is ConflictException conflict)
+            {
+                context.Result = new ConflictObjectResult(new { message = conflict.Message });
+                context.ExceptionHandled = true;
+            }
+            else if (context.Exception is UnauthorizedException unauthorized)
+            {
+                context.Result = new UnauthorizedObjectResult(new { message = unauthorized.Message });
+                context.ExceptionHandled = true;
+            }
             else
             {
                 context.Result = new ObjectResult(new { message = "Erro interno do servidor." })

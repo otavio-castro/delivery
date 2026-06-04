@@ -13,14 +13,14 @@ namespace delivery_back.Models
         [Required, StringLength(150)]
         public string Nome { get; set; } = string.Empty;
 
-        [Required, StringLength(14)]
+        [Required, StringLength(11)]
         public string CPF { get; set; } = string.Empty;
 
-        [StringLength(20)]
-        public string? Telefone { get; set; }
+        [Required, StringLength(20)]
+        public string Telefone { get; set; } = string.Empty;
 
-        [StringLength(100)]
-        public string? Veiculo { get; set; }
+        [Required, StringLength(50)]
+        public string Veiculo { get; set; } = string.Empty;
 
         public bool Disponivel { get; set; } = true;
 
