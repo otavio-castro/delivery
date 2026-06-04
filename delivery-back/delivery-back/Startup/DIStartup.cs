@@ -1,6 +1,10 @@
 using delivery_back.Context;
 using delivery_back.Filters;
 using delivery_back.Mappings;
+using delivery_back.Repositories;
+using delivery_back.Repositories.Interfaces;
+using delivery_back.Services;
+using delivery_back.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace delivery_back.Startup
@@ -23,6 +27,18 @@ namespace delivery_back.Startup
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             #endregion AutoMapper
+
+            #region Repositories
+
+            builder.Services.AddScoped<IRestauranteRepository, RestauranteRepository>();
+
+            #endregion Repositories
+
+            #region Services
+
+            builder.Services.AddScoped<IRestauranteService, RestauranteService>();
+
+            #endregion Services
 
             #region Filters
 

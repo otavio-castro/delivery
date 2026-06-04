@@ -1,4 +1,6 @@
 using AutoMapper;
+using delivery_back.DTOs;
+using delivery_back.Models;
 
 namespace delivery_back.Mappings
 {
@@ -6,7 +8,12 @@ namespace delivery_back.Mappings
     {
         public MappingProfile()
         {
-            // Mapeamentos serão adicionados conforme os DTOs forem criados
+            // Restaurante
+            CreateMap<Restaurante, RestauranteDTO>();
+            CreateMap<RestauranteCreateDTO, Restaurante>()
+                .ForMember(dest => dest.Nota, opt => opt.MapFrom(src => 0))
+                .ForMember(dest => dest.Ativo, opt => opt.MapFrom(src => true));
+            CreateMap<RestauranteUpdateDTO, Restaurante>();
         }
     }
 }
