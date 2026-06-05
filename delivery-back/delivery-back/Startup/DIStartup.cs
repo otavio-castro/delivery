@@ -15,7 +15,10 @@ namespace delivery_back.Startup
         {
             #region DbContext
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            // Priorizar variável de ambiente DATABASE_URL (Render) ou CONNECTION_STRING
+            var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+                ?? Environment.GetEnvironmentVariable("CONNECTION_STRING")
+                ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(connectionString));

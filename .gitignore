@@ -3,6 +3,9 @@
 
 # Secrets — never commit credentials
 appsettings.Development.json
+.env
+.env.local
+.env.*.local
 
 # User-specific files
 *.rsuser
