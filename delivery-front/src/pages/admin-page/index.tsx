@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaStore, FaPizzaSlice, FaMotorcycle, FaBox, FaUsers } from "react-icons/fa";
-import { MdPending } from "react-icons/md";
 import { api } from "../../config/api";
 import Layout from "../../components/layout";
 import * as Styled from "./index.style";

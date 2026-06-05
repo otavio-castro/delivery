@@ -127,7 +127,7 @@ export const api = {
       const { data } = await axiosInstance.get<Pedido>(`/api/pedidos/${id}`);
       return data;
     },
-    create: async (pedido: Omit<Pedido, "pedidoId" | "status" | "dataPedido" | "dataAtualizacao">): Promise<Pedido> => {
+    create: async (pedido: Omit<Pedido, "pedidoId" | "clienteNome" | "restauranteNome" | "enderecoCompleto" | "entregadorNome" | "status" | "dataPedido" | "atualizadoEm">): Promise<Pedido> => {
       const { data } = await axiosInstance.post<Pedido>("/api/pedidos", pedido);
       return data;
     },

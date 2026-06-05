@@ -123,7 +123,6 @@ const AcompanhamentoPage = () => {
                 {STATUS_ORDER.map((status, index) => {
                   const isCompleted = index <= currentStatusIndex;
                   const isCurrent = index === currentStatusIndex;
-                  const isCanceled = pedido.status === "Cancelado";
 
                   return (
                     <Styled.TimelineItem key={status} completed={isCompleted}>

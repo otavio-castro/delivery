@@ -236,7 +236,7 @@ const CheckoutPage = () => {
         enderecoId,
         entregadorId: null,
         valorTotal: getTotal() + 5, // total + taxa de entrega
-        observacoes: null,
+        observacao: null,
       });
 
       // 4. Criar itens do pedido
