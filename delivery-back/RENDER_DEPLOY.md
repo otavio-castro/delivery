@@ -39,7 +39,7 @@ Na seção **"Environment Variables"**, adicione:
 
 | Key | Value | Descrição |
 |-----|-------|-----------|
-| `DATABASE_URL` | `<Cole a Internal Database URL>` | Connection string do PostgreSQL |
+| `DATABASE_URL` | `<Cole a Internal Database URL>` | Connection string do PostgreSQL (formato URL) |
 | `ASPNETCORE_ENVIRONMENT` | `Production` | Ambiente de execução |
 
 **Exemplo de DATABASE_URL**:
@@ -47,6 +47,8 @@ Na seção **"Environment Variables"**, adicione:
 postgresql://user:password@dpg-xxxxx-a.oregon-postgres.render.com/godelivery
 ```
 
+> ✅ **Novo**: O sistema agora **converte automaticamente** o formato URL do PostgreSQL (`postgresql://...`) para o formato que o Npgsql entende!
+>
 > ⚠️ **Importante**: Não compartilhe suas credenciais de banco de dados!
 > 
 > 💡 **CORS**: O backend está configurado para aceitar requisições de qualquer origem (AllowAnyOrigin). Para produção, considere restringir isso por segurança.

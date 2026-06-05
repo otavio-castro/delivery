@@ -16,9 +16,19 @@ namespace delivery_back.Startup
             #region DbContext
 
             // Priorizar variável de ambiente DATABASE_URL (Render) ou CONNECTION_STRING
-            var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
-                ?? Environment.GetEnvironmentVariable("CONNECTION_STRING")
-                ?? builder.Configuration.GetConnectionString("DefaultConnection");
+            var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            string connectionString;
+
+            if (!string.IsNullOrEmpty(databaseUrl))
+            {
+                // Converter DATABASE_URL (formato PostgreSQL URL) para Connection String do Npgsql
+                connectionString = ConvertPostgresUrlToConnectionString(databaseUrl);
+            }
+            else
+            {
+                connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING")
+                    ?? builder.Configuration.GetConnectionString("DefaultConnection")!;
+            }
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(connectionString));
@@ -65,6 +75,31 @@ namespace delivery_back.Startup
             });
 
             #endregion Filters
+        }
+
+        /// <summary>
+        /// Converte DATABASE_URL do formato PostgreSQL (postgresql://user:pass@host:port/db)
+        /// para Connection String do Npgsql (Host=host;Database=db;Username=user;Password=pass;SSL Mode=Require)
+        /// </summary>
+        private static string ConvertPostgresUrlToConnectionString(string databaseUrl)
+        {
+            try
+            {
+                var uri = new Uri(databaseUrl);
+                var userInfo = uri.UserInfo.Split(':');
+                
+                var host = uri.Host;
+                var port = uri.Port > 0 ? uri.Port : 5432;
+                var database = uri.LocalPath.TrimStart('/');
+                var username = userInfo[0];
+                var password = userInfo.Length > 1 ? userInfo[1] : "";
+
+                return $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"DATABASE_URL inválida: {ex.Message}", ex);
+            }
         }
     }
 }
