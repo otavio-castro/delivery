@@ -10,7 +10,8 @@ import type {
   Pagamento 
 } from "../types/entities";
 
-export const API_BASE_URL = "https://localhost:7007";
+// Usa variável de ambiente que muda automaticamente entre dev e produção
+export const API_BASE_URL = import.meta.env.VITE_API_URL || "https://localhost:7007";
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
