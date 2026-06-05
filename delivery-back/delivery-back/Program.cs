@@ -1,3 +1,4 @@
+using delivery_back.Context;
 using delivery_back.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,14 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Seed do banco de dados
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var seeder = new DatabaseSeeder(context);
+    await seeder.SeedAsync();
+}
 
 if (app.Environment.IsDevelopment())
 {

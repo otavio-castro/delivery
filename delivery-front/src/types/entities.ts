@@ -32,14 +32,18 @@ export interface Cliente {
 export interface Pedido {
   pedidoId: number;
   clienteId: number;
+  clienteNome: string;
   restauranteId: number;
-  entregadorId: number | null;
+  restauranteNome: string;
   enderecoId: number;
+  enderecoCompleto: string;
+  entregadorId: number | null;
+  entregadorNome: string | null;
   status: string;
   valorTotal: number;
+  observacao: string | null;
   dataPedido: string;
-  dataAtualizacao: string;
-  observacoes: string | null;
+  atualizadoEm: string | null;
 }
 
 export interface ItemPedido {
@@ -53,7 +57,7 @@ export interface ItemPedido {
 export interface Endereco {
   enderecoId: number;
   clienteId: number;
-  rua: string;
+  logradouro: string;
   numero: string;
   complemento: string | null;
   bairro: string;

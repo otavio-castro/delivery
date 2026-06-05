@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as Styled from "./index.style.ts";
+import * as Styled from "./index.style";
 import { useRestaurantesStore } from "../../stores/restaurantes.store";
 import { useLoadingStore } from "../../stores/loading.store";
 import { api } from "../../config/api";

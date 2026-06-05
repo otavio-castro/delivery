@@ -20,7 +20,7 @@ namespace delivery_back.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAll(
-            [FromQuery] int restauranteId,
+            [FromQuery] int? restauranteId,
             [FromQuery] string? categoria,
             [FromQuery] bool? disponivel)
         {

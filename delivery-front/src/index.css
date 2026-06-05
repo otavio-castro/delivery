@@ -1,69 +1,131 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Border radius */
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-lg: 12px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  /* Tipografia - Aplicada a AMBOS os temas */
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Transição suave entre temas */
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   @media (max-width: 1024px) {
     font-size: 16px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* Tema Claro (padrão) */
+:root[data-theme="light"] {
+  --text: #555555;
+  --text-h: #333333;
+  --bg: #ffffff;
+  --border: #dee2e6;
+  --code-bg: #f8f9fa;
+  --accent: #ff6b35;
+  --accent-bg: rgba(255, 107, 53, 0.15);
+  --accent-border: rgba(255, 107, 53, 0.5);
+  --social-bg: rgba(248, 249, 250, 0.8);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  /* Variáveis para styled-components */
+  --color-primary: #ff6b35;
+  --color-primary-dark: #e55a28;
+  --color-secondary: #6b7280;
+  --color-background: #ffffff;
+  --color-card: #f8f9fa;
+  --color-heading: #333333;
+  --color-text: #555555;
+  --color-text-muted: #6c757d;
+  --color-border: #dee2e6;
+  --color-error: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Tema Escuro */
+:root[data-theme="dark"] {
+  --text: #e5e5e5;
+  --text-h: #ffffff;
+  --bg: #0f0f0f;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --accent: #ff6b35;
+  --accent-bg: rgba(255, 107, 53, 0.15);
+  --accent-border: rgba(255, 107, 53, 0.5);
+  --social-bg: rgba(26, 26, 26, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  /* Variáveis para styled-components */
+  --color-primary: #ff6b35;
+  --color-primary-dark: #e55a28;
+  --color-secondary: #6b7280;
+  --color-background: #0f0f0f;
+  --color-card: #1a1a1a;
+  --color-heading: #ffffff;
+  --color-text: #e5e5e5;
+  --color-text-muted: #9ca3af;
+  --color-border: #2a2a2a;
+  --color-error: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.35);
+  
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 body {
   margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 h1,

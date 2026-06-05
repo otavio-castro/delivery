@@ -14,11 +14,16 @@ namespace delivery_back.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Produto>> GetAllByRestauranteAsync(int restauranteId, string? categoria = null, bool? disponivel = null)
+        public async Task<IEnumerable<Produto>> GetAllByRestauranteAsync(int? restauranteId = null, string? categoria = null, bool? disponivel = null)
         {
             var query = _context.Produtos
                 .Include(p => p.Restaurante)
-                .Where(p => p.RestauranteId == restauranteId);
+                .AsQueryable();
+
+            if (restauranteId.HasValue)
+            {
+                query = query.Where(p => p.RestauranteId == restauranteId.Value);
+            }
 
             if (!string.IsNullOrWhiteSpace(categoria))
             {

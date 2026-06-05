@@ -1,4 +1,5 @@
 using delivery_back.Models;
+using System.Text.Json.Serialization;
 
 namespace delivery_back.DTOs
 {
@@ -13,9 +14,13 @@ namespace delivery_back.DTOs
         public string EnderecoCompleto { get; set; } = string.Empty;
         public int? EntregadorId { get; set; }
         public string? EntregadorNome { get; set; }
+        
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public StatusPedido Status { get; set; }
+        
         public decimal ValorTotal { get; set; }
         public string? Observacao { get; set; }
+        public DateTime DataPedido { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime? AtualizadoEm { get; set; }
     }

@@ -83,6 +83,12 @@ namespace delivery_back.Services
             var statusAtual = pedido.Status;
             var novoStatus = dto.NovoStatus;
 
+            // Se o status não mudou, retornar sem fazer nada
+            if (statusAtual == novoStatus)
+            {
+                return pedido;
+            }
+
             // Validar transições de status
             if (!IsTransicaoValida(statusAtual, novoStatus))
             {
@@ -127,10 +133,6 @@ namespace delivery_back.Services
 
         private static bool IsTransicaoValida(StatusPedido statusAtual, StatusPedido novoStatus)
         {
-            // Se o status não mudou, não há transição
-            if (statusAtual == novoStatus)
-                return false;
-
             return statusAtual switch
             {
                 StatusPedido.Pendente => novoStatus == StatusPedido.Confirmado || novoStatus == StatusPedido.Cancelado,

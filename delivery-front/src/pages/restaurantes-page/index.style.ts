@@ -51,7 +51,7 @@ export const ErrorMessage = styled.div`
   padding: 2rem 1rem;
   font-size: 1.125rem;
   color: var(--color-error, #dc3545);
-  background: #fff5f5;
+  background: rgba(239, 68, 68, 0.1);
   border: 1px solid var(--color-error, #dc3545);
   border-radius: var(--border-radius-md, 8px);
   margin-top: 2rem;

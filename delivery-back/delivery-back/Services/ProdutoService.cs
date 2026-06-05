@@ -23,7 +23,7 @@ namespace delivery_back.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Produto>> GetAllByRestauranteAsync(int restauranteId, string? categoria = null, bool? disponivel = null)
+        public async Task<IEnumerable<Produto>> GetAllByRestauranteAsync(int? restauranteId = null, string? categoria = null, bool? disponivel = null)
             => await _repository.GetAllByRestauranteAsync(restauranteId, categoria, disponivel);
 
         public async Task<Produto?> GetByIdAsync(int id)

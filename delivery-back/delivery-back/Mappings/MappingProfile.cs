@@ -48,7 +48,8 @@ namespace delivery_back.Mappings
                     src.Endereco != null 
                         ? $"{src.Endereco.Logradouro}, {src.Endereco.Numero} - {src.Endereco.Bairro}, {src.Endereco.Cidade} - {src.Endereco.CEP}"
                         : string.Empty))
-                .ForMember(dest => dest.EntregadorNome, opt => opt.MapFrom(src => src.Entregador != null ? src.Entregador.Nome : null));
+                .ForMember(dest => dest.EntregadorNome, opt => opt.MapFrom(src => src.Entregador != null ? src.Entregador.Nome : null))
+                .ForMember(dest => dest.DataPedido, opt => opt.MapFrom(src => src.CriadoEm));
             CreateMap<PedidoCreateDTO, Pedido>();
             CreateMap<PedidoUpdateDTO, Pedido>();
 

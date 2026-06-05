@@ -1,4 +1,5 @@
-import * as Styled from "./index.style.ts";
+import { FaStar, FaMapMarkerAlt } from "react-icons/fa";
+import * as Styled from "./index.style";
 import type { Restaurante } from "../../../../types/entities";
 
 interface Props {
@@ -39,7 +40,7 @@ const CardRestaurante = ({ restaurante }: Props) => {
         <Styled.HeaderCard>
           <Styled.Nome>{nome}</Styled.Nome>
           <Styled.NotaWrapper>
-            <Styled.Estrela>⭐</Styled.Estrela>
+            <Styled.Estrela><FaStar /></Styled.Estrela>
             <Styled.Nota>{nota.toFixed(1)}</Styled.Nota>
           </Styled.NotaWrapper>
         </Styled.HeaderCard>
@@ -48,7 +49,7 @@ const CardRestaurante = ({ restaurante }: Props) => {
 
         {endereco && (
           <Styled.Endereco>
-            <Styled.IconeEndereco>📍</Styled.IconeEndereco>
+            <Styled.IconeEndereco><FaMapMarkerAlt /></Styled.IconeEndereco>
             {endereco}
           </Styled.Endereco>
         )}
