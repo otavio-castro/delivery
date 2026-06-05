@@ -25,13 +25,17 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Seed do banco de dados
+// Seed do banco de dados - DESABILITADO para produção (economizar memória)
+// Para popular o banco, execute manualmente via Render Shell:
+// cd /app && dotnet run -- seed
+/*
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     var seeder = new DatabaseSeeder(context);
     await seeder.SeedAsync();
 }
+*/
 
 app.UseSwagger();
 app.UseSwaggerUI();
