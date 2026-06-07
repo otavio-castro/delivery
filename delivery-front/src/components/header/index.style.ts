@@ -105,3 +105,28 @@ export const ThemeToggle = styled.button`
     font-size: 1.25rem;
   }
 `;
+
+export const AuthArea = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const AuthText = styled.span`
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+`;
+
+export const AuthButton = styled.button`
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 0.35rem 0.7rem;
+  color: var(--color-text);
+  font-weight: 600;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+`;

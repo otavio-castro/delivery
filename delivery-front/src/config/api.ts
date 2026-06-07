@@ -10,8 +10,15 @@ import type {
   Pagamento 
 } from "../types/entities";
 
+interface ClienteCreatePayload {
+  nome: string;
+  email: string;
+  senha: string;
+  telefone?: string | null;
+}
+
 // Usa variável de ambiente que muda automaticamente entre dev e produção
-export const API_BASE_URL = import.meta.env.VITE_API_URL || "https://localhost:7007";
+export const API_BASE_URL = import.meta.env.VITE_API_URL || "https://localhost:8080";
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -81,8 +88,12 @@ export const api = {
       const { data } = await axiosInstance.get<Cliente>(`/api/clientes/${id}`);
       return data;
     },
-    create: async (cliente: Omit<Cliente, "clienteId" | "dataCadastro">): Promise<Cliente> => {
+    create: async (cliente: ClienteCreatePayload): Promise<Cliente> => {
       const { data } = await axiosInstance.post<Cliente>("/api/clientes", cliente);
+      return data;
+    },
+    login: async (email: string, senha: string): Promise<Cliente> => {
+      const { data } = await axiosInstance.post<Cliente>("/api/clientes/login", { email, senha });
       return data;
     },
     update: async (id: number, cliente: Omit<Cliente, "clienteId" | "dataCadastro">): Promise<Cliente> => {

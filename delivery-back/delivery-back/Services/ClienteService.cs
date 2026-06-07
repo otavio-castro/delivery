@@ -34,7 +34,8 @@ namespace delivery_back.Services
                 Nome = dto.Nome,
                 Email = dto.Email,
                 SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha),
-                Telefone = dto.Telefone
+                Telefone = dto.Telefone,
+                IsAdmin = false
             };
 
             return await _repository.CreateAsync(cliente);

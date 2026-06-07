@@ -26,6 +26,7 @@ const CheckoutPage = () => {
     // Cliente
     nome: "",
     email: "",
+    senha: "",
     telefone: "",
     cpf: "",
     // Endereço
@@ -94,6 +95,7 @@ const CheckoutPage = () => {
         ...formData,
         nome: "",
         email: "",
+        senha: "",
         telefone: "",
         cpf: "",
         logradouro: "",
@@ -153,6 +155,8 @@ const CheckoutPage = () => {
     if (!clienteSelecionadoId) {
       if (!formData.nome) newErrors.nome = "Nome é obrigatório";
       if (!formData.email) newErrors.email = "Email é obrigatório";
+      if (!formData.senha) newErrors.senha = "Senha é obrigatória";
+      if (formData.senha && formData.senha.length < 8) newErrors.senha = "Senha deve ter no mínimo 8 caracteres";
       if (!formData.telefone) newErrors.telefone = "Telefone é obrigatório";
     }
 
@@ -210,8 +214,8 @@ const CheckoutPage = () => {
         const cliente = await api.clientes.create({
           nome: formData.nome,
           email: formData.email,
+          senha: formData.senha,
           telefone: formData.telefone,
-          cpf: formData.cpf || null,
         });
         clienteId = cliente.clienteId;
 
@@ -325,6 +329,15 @@ const CheckoutPage = () => {
                     onChange={handleChange}
                     error={errors.telefone}
                     placeholder="(11) 99999-9999"
+                  />
+                  <Input
+                    label="Senha *"
+                    name="senha"
+                    type="password"
+                    value={formData.senha}
+                    onChange={handleChange}
+                    error={errors.senha}
+                    placeholder="Minimo 8 caracteres"
                   />
                   <Input
                     label="CPF"

@@ -25,8 +25,9 @@ export interface Cliente {
   nome: string;
   email: string;
   telefone: string | null;
-  cpf: string | null;
-  dataCadastro: string;
+  cpf?: string | null;
+  dataCadastro?: string;
+  isAdmin: boolean;
 }
 
 export interface Pedido {

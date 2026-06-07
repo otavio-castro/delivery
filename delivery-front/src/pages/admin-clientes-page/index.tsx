@@ -86,7 +86,11 @@ const AdminClientesPage = () => {
                   <td>{cliente.email}</td>
                   <td>{cliente.telefone || "-"}</td>
                   <td>{cliente.cpf || "-"}</td>
-                  <td>{new Date(cliente.dataCadastro).toLocaleDateString("pt-BR")}</td>
+                  <td>
+                    {cliente.dataCadastro
+                      ? new Date(cliente.dataCadastro).toLocaleDateString("pt-BR")
+                      : "-"}
+                  </td>
                   <td>
                     <Styled.ActionButtons>
                       <Styled.ActionButton onClick={() => handleVerEnderecos(cliente.clienteId)}>

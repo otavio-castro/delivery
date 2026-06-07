@@ -22,6 +22,8 @@ namespace delivery_back.Models
         [StringLength(20)]
         public string? Telefone { get; set; }
 
+        public bool IsAdmin { get; set; } = false;
+
         public ICollection<Endereco> Enderecos { get; set; } = [];
         public ICollection<Pedido> Pedidos { get; set; } = [];
     }
