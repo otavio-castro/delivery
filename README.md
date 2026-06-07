@@ -18,7 +18,6 @@ A solucao usa arquitetura com frontend React + backend ASP.NET Core + PostgreSQL
 - Regras de negocio (exemplo): email unico de cliente, cpf unico de entregador, 1 pagamento por pedido, validacoes de valor/quantidade.
 
 Artefatos desta entrega:
-- DER e classes: 01_DER_E_CLASSE.md
 - Modelo logico: 02_MODELO_LOGICO.md
 - DDL fisico: 03_MODELO_FISICO_DDL.sql
 - Consultas SQL: 04_CONSULTAS_SQL.sql + 04_CONSULTAS_EXPLICACAO.md
