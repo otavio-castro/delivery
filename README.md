@@ -3,6 +3,8 @@
 ## 1. Introducao
 O projeto GoDelivery foi desenvolvido para apoiar o processo de delivery, cobrindo cadastro de usuarios, autenticacao, cardapio, pedidos, entrega e pagamento. O problema principal e organizar o fluxo completo do pedido com integridade dos dados e rastreabilidade entre entidades.
 
+Disponível: https://godelivery-flax.vercel.app
+
 ## 2. Objetivos do Trabalho
 - Especificar e modelar um sistema de informacao para o dominio de delivery.
 - Implementar o banco de dados com modelo conceitual, logico e fisico.
