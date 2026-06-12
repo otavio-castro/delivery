@@ -5,6 +5,9 @@ O projeto GoDelivery foi desenvolvido para apoiar o processo de delivery, cobrin
 
 Disponível: https://godelivery-flax.vercel.app
 
+<img width="1896" height="948" alt="image" src="https://github.com/user-attachments/assets/239a8b07-09a8-446b-b0a7-98c609198ff1" />
+
+
 ## 2. Objetivos do Trabalho
 - Especificar e modelar um sistema de informacao para o dominio de delivery.
 - Implementar o banco de dados com modelo conceitual, logico e fisico.
